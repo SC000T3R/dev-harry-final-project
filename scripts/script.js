@@ -20,9 +20,32 @@ function populateDropdowns() {
     addOptions("inputBread", sandwichData.breads);
     addOptions("inputProtein", sandwichData.proteins);
     addOptions("inputCheese", sandwichData.cheeses);
-    addOptions("inputToppings", sandwichData.toppings);
-    addOptions("inputCondiments", sandwichData.condiments);
 }
+function populateCheckboxes() {
+    const addCheckboxes = (elementId, options) => {
+        const element = document.getElementById(elementId);
+        options.forEach(option => {
+            const div = document.createElement("div");
+            div.classList.add("form-check");
+            const input = document.createElement("input");
+            input.type = "checkbox";
+            input.classList.add("form-check-input");
+            input.id = `topping-${option}`;
+            input.name = "toppings";
+            input.value = option;
+            const label = document.createElement("label");
+            label.classList.add("form-check-label");
+            label.setAttribute("for", input.id);
+            label.textContent = option;
+            div.appendChild(input);
+            div.appendChild(label);
+            element.appendChild(div);
+        });
+    };
+
+    addCheckboxes("inputToppings", sandwichData.toppings);
+}
+
 
 document.getElementById("sandwichForm").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -32,18 +55,29 @@ document.getElementById("sandwichForm").addEventListener("submit", function (e) 
         bread: document.getElementById("inputBread").value,
         protein: document.getElementById("inputProtein").value,
         cheese: document.getElementById("inputCheese").value,
-        toppings: Array.from(document.getElementById("inputToppings").selectedOptions).map(opt => opt.value),
-        condiments: Array.from(document.getElementById("inputCondiments").selectedOptions).map(opt => opt.value)
+        toppings: Array.from(document.querySelectorAll('input[name="toppings"]:checked')).map(opt => opt.value),
+        condiments: Array.from(document.querySelectorAll('.condiment-btn.btn-success')).map(button => button.textContent)
     };
 
-    console.log("Sandwich Data:", JSON.stringify(formData, null, 2));
+   console.log("Sandwich Data:", JSON.stringify(formData, null, 2));
 
     const successMessage = document.getElementById("successMessage");
     successMessage.textContent = `Thanks, ${formData.name}! Your sandwich has been built.`;
     successMessage.className = "alert alert-success";
+
+    // Clear the form after submission
+    document.getElementById("sandwichForm").reset();
+
+    // Clear success message after a few seconds
+    setTimeout(() => {
+        successMessage.textContent = "";
+    }, 5000);
 });
 
-document.addEventListener("DOMContentLoaded", populateDropdowns);
+document.addEventListener("DOMContentLoaded", function() {
+    populateDropdowns();
+    populateCheckboxes();
+});
 
 // Get all condiment buttons
 const condimentButtons = document.querySelectorAll('.condiment-btn');
@@ -56,34 +90,3 @@ condimentButtons.forEach(button => {
         this.classList.toggle('btn-outline-success');
     });
 });
-
-document.getElementById("submitSandwich").addEventListener("click", function () {
-  // Collect the data from the form
-  const bread = document.getElementById("bread").value;
-  const protein = document.getElementById("protein").value;
-  const cheese = document.getElementById("cheese").value;
-  const toppings = Array.from(document.getElementById("toppings").selectedOptions).map(option => option.value);
-  const condiments = Array.from(document.getElementById("condiments").selectedOptions).map(option => option.value);
-
-  // Create an object with the selected sandwich data
-  const sandwichData = {
-    bread: bread,
-    protein: protein,
-    cheese: cheese,
-    toppings: toppings,
-    condiments: condiments,
-  };
-
-  // Output the sandwich data to the DOM
-  const sandwichSummary = `
-    <h3>Your Sandwich:</h3>
-    <p>Bread: ${sandwichData.bread}</p>
-    <p>Protein: ${sandwichData.protein}</p>
-    <p>Cheese: ${sandwichData.cheese}</p>
-    <p>Toppings: ${sandwichData.toppings.join(", ")}</p>
-    <p>Condiments: ${sandwichData.condiments.join(", ")}</p>
-  `;
-  document.getElementById("sandwich-summary").innerHTML = sandwichSummary;
-
-  // Log the sandwich data to the console in JSON format
-  console.log("Sandwich Data: ", JSON.stringify(sandwichData));
