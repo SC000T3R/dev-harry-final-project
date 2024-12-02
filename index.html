@@ -58,22 +58,8 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Choose Your Toppings</label><br>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="toppingLettuce" name="toppings" value="Lettuce">
-                    <label class="form-check-label" for="toppingLettuce">Lettuce</label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="toppingTomato" name="toppings" value="Tomato">
-                    <label class="form-check-label" for="toppingTomato">Tomato</label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="toppingOnion" name="toppings" value="Onion">
-                    <label class="form-check-label" for="toppingOnion">Onion</label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="toppingPickles" name="toppings" value="Pickles">
-                    <label class="form-check-label" for="toppingPickles">Pickles</label>
-                </div>
+                <!-- This is where we will dynamically populate the toppings checkboxes -->
+                <div id="inputToppings"></div>
             </div>
             <div class="mb-3">
                 <label class="form-label">Choose Your Condiments</label><br>
@@ -92,8 +78,6 @@
     <footer class="footer text-center mt-4">
         <p>&copy; Namewich 2024, All rights reserved to Luke Hester</p>
     </footer>
-
-    <div id="sandiwch-summary"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
     <script src="scripts/script.js"></script>
