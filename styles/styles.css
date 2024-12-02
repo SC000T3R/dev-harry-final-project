@@ -79,20 +79,28 @@ footer {
     background-color: #006600;
     border-color: #006600;
   }
-  .bg-faded-orange {
-    background-color: #ffcc99; 
-    border-radius: 8px; 
-    border: 1px solid #ff9966; 
-  }
-  
-  .card {
-    border: 1px solid #004d00;
-    background-color: #e6ffe6;
-  }
-  
-  .card-title {
-    color: #004d00;
-    font-weight: bold;
-    text-align: center;
-  }
+ .alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+.form-check {
+    margin-bottom: 8px;
+}
+
+
+button.condiment-btn {
+    margin-right: 5px;
+}
+
+
+.bg-faded-orange {
+    background-color: #ffcc99;
+    border-radius: 8px;
+    border: 1px solid #ff9966;
+}
+
  
