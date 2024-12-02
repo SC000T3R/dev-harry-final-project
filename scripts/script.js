@@ -57,3 +57,33 @@ condimentButtons.forEach(button => {
     });
 });
 
+document.getElementById("submitSandwich").addEventListener("click", function () {
+  // Collect the data from the form
+  const bread = document.getElementById("bread").value;
+  const protein = document.getElementById("protein").value;
+  const cheese = document.getElementById("cheese").value;
+  const toppings = Array.from(document.getElementById("toppings").selectedOptions).map(option => option.value);
+  const condiments = Array.from(document.getElementById("condiments").selectedOptions).map(option => option.value);
+
+  // Create an object with the selected sandwich data
+  const sandwichData = {
+    bread: bread,
+    protein: protein,
+    cheese: cheese,
+    toppings: toppings,
+    condiments: condiments,
+  };
+
+  // Output the sandwich data to the DOM
+  const sandwichSummary = `
+    <h3>Your Sandwich:</h3>
+    <p>Bread: ${sandwichData.bread}</p>
+    <p>Protein: ${sandwichData.protein}</p>
+    <p>Cheese: ${sandwichData.cheese}</p>
+    <p>Toppings: ${sandwichData.toppings.join(", ")}</p>
+    <p>Condiments: ${sandwichData.condiments.join(", ")}</p>
+  `;
+  document.getElementById("sandwich-summary").innerHTML = sandwichSummary;
+
+  // Log the sandwich data to the console in JSON format
+  console.log("Sandwich Data: ", JSON.stringify(sandwichData));
