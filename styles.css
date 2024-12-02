@@ -1,0 +1,98 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fefefe;
+    color: #333;
+}
+
+h1 {
+    color: #bf360c;
+}
+
+.navbar {
+    background-color: #bf360c;
+}
+
+.navbar-brand {
+    color: #ffffff !important;
+    font-weight: bold;
+}
+
+.navbar .nav-link {
+    color: #ffffff !important;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.card {
+    border: 1px solid #bf360c;
+    background-color: #ffecb3;
+}
+
+.form-label {
+    color: #bf360c;
+    font-weight: bold;
+}
+
+select, input {
+    border: 1px solid #bf360c;
+    border-radius: 4px;
+}
+
+input:focus, select:focus {
+    border-color: #e65100;
+    box-shadow: 0 0 5px rgba(191, 54, 12, 0.5);
+}
+
+button {
+    background-color: #bf360c;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e65100;
+}
+
+footer {
+    background-color: #bf360c;
+    color: white;
+    padding: 15px;
+}
+.btn-outline-success {
+    border: 2px solid #004d00;
+    color: #004d00;
+  }
+  
+  .btn-success {
+    background-color: #004d00;
+    border-color: #004d00;
+    color: white;
+  }
+  
+  .btn-success:hover, .btn-outline-success:hover {
+    background-color: #006600;
+    border-color: #006600;
+  }
+  .bg-faded-orange {
+    background-color: #ffcc99; 
+    border-radius: 8px; 
+    border: 1px solid #ff9966; 
+  }
+  
+  .card {
+    border: 1px solid #004d00;
+    background-color: #e6ffe6;
+  }
+  
+  .card-title {
+    color: #004d00;
+    font-weight: bold;
+    text-align: center;
+  }
+ 
